@@ -95,9 +95,15 @@
                 <version>3.2.0</version>
                 <configuration>
                     <archive>
+                        <index>true</index>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <Main-Class>
+                                org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader
+                            </Main-Class>
+                        </manifest>
                         <manifestEntries>
-                            <Class-Path>lib/*</Class-Path>
-                            <Main-Class>org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader</Main-Class>
+                            <Class-Path>./</Class-Path>
                             <Rsrc-Main-Class>com.codegym.games.racer.RacerGame</Rsrc-Main-Class>
                         </manifestEntries>
                     </archive>
@@ -111,7 +117,7 @@
                 <executions>
                     <execution>
                         <id>copy-dependencies</id>
-                        <phase>package</phase>
+                        <phase>generate-resources</phase>
                         <goals>
                             <goal>copy-dependencies</goal>
                         </goals>
@@ -126,11 +132,9 @@
         <resources>
             <resource>
                 <directory>${project.build.directory}/lib</directory>
-                <targetPath>lib/</targetPath>
             </resource>
         </resources>
     </build>
-
 
 
 </project>
